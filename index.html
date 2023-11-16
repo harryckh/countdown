@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#333333">
+    <title>Counting Days..</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700&display=swap" rel="stylesheet">
+    <link href="normalize.css" rel="stylesheet">
+    <link href="reset-form.css?v2" rel="stylesheet">
+    <link href="base.css?v2" rel="stylesheet">
+</head>
+
+
+<body>
+    <div id="countdown"></div>
+
+<!--
+    <div class="actions">
+        <div class="button clickable" id="btn-generate" onclick="updateCountdown()">Result</div>
+    </div>
+    <div id="text"></div>-->
+    <script src="main.js"></script>
+</body>
+<script>
+const targetDate1 = new Date('2018-11-17T00:00:00');
+const targetDate2 = new Date('2025-04-19T00:00:00');
+
+
+function updateCountdown() {
+  const currentDate = new Date();
+  const difference1 = new Date(Math.abs(targetDate1 - currentDate));
+  const difference2 = new Date(Math.abs(targetDate2 - currentDate));
+
+  // Calculate the remaining years, months, and days
+  const years1 = difference1.getUTCFullYear() - 1970;
+  const months1 = difference1.getUTCMonth();
+  const days1 = difference1.getUTCDate() - 1;
+  const hours1 = difference1.getUTCHours();
+  const minutes1 = difference1.getUTCMinutes();
+  const seconds1 = difference1.getUTCSeconds();
+
+  const years2 = difference2.getUTCFullYear() - 1970;
+  const months2 = difference2.getUTCMonth();
+  const days2 = difference2.getUTCDate() - 1;
+  const hours2 = difference2.getUTCHours();
+  const minutes2 = difference2.getUTCMinutes();
+  const seconds2 = difference2.getUTCSeconds();
+
+
+
+  // Update the countdown display
+  document.getElementById('countdown').innerHTML = `
+    <p><b>${years1} Year ${months1} Months ${days1} Days ${hours1} Hours ${minutes1} minutes ${seconds1} seconds</b> passed since 17/11/2018</p>
+    <p><b>${years2} Year ${months2} Months ${days2} Days ${hours2} Hours ${minutes2} minutes ${seconds2} seconds</b> until 19/4/2025</p>
+  `;
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
+</html>
