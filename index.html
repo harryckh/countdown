@@ -26,13 +26,18 @@
 <script>
 const targetDate1 = new Date('2018-11-17T00:00:00');
 const targetDate2 = new Date('2025-04-19T00:00:00');
+const omitDays = 805; // number of meet days
 
 
 function updateCountdown() {
   const currentDate = new Date();
   const difference1 = new Date(Math.abs(targetDate1 - currentDate));
   const difference2 = new Date(Math.abs(targetDate2 - currentDate));
+  let difference3 =  new Date(Math.abs(difference1));
+  difference3.setDate(difference3.getDate()- omitDays);
 
+ let difference4 =  new Date(Math.abs(omitDays * (24*60*60*1000)));
+ 
   // Calculate the remaining years, months, and days
   const years1 = difference1.getUTCFullYear() - 1970;
   const months1 = difference1.getUTCMonth();
@@ -48,12 +53,29 @@ function updateCountdown() {
   const minutes2 = difference2.getUTCMinutes();
   const seconds2 = difference2.getUTCSeconds();
 
+  const years3 = difference3.getUTCFullYear() - 1970;
+  const months3 = difference3.getUTCMonth();
+  const days3 = difference3.getUTCDate() - 1;
+  const hours3 = difference3.getUTCHours();
+  const minutes3 = difference3.getUTCMinutes();
+  const seconds3 = difference3.getUTCSeconds();
+
+  const years4 = difference4.getUTCFullYear() - 1970;
+  const months4 = difference4.getUTCMonth();
+  const days4 = difference4.getUTCDate() - 1;
+  const hours4 = difference4.getUTCHours();
+  const minutes4 = difference4.getUTCMinutes();
+  const seconds4 = difference4.getUTCSeconds();
 
 
   // Update the countdown display
   document.getElementById('countdown').innerHTML = `
-    <p><b>${years1} Year ${months1} Months ${days1} Days ${hours1} Hours ${minutes1} minutes ${seconds1} seconds</b> passed since 17/11/2018</p>
-    <p><b>${years2} Year ${months2} Months ${days2} Days ${hours2} Hours ${minutes2} minutes ${seconds2} seconds</b> until 19/4/2025</p>
+    <p>Since 17/11/2018: <b>${years1}年 ${months1}月 ${days1}日 ${hours1}時 ${minutes1}分 ${seconds1}秒</b></p>
+    <p>Long D timer: <b>${years3}年 ${months3}月 ${days3}日 ${hours3}時 ${minutes3}分 ${seconds3}秒</b>
+    <p>So non-Long D: <b>${years4}年 ${months4}月 ${days4}日 ${hours4}時 ${minutes4}分 ${seconds4}秒</b>
+    <br><br><hr>
+    <p><br><br><b>${years2}年 ${months2}月 ${days2}日 ${hours2}時 ${minutes2}分 ${seconds2}秒</b> until 19/4/2025</p>
+    
   `;
 }
 

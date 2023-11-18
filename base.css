@@ -54,6 +54,10 @@ input[type="radio"] {
 h1 {
     font-size: 40px;
 }
+p {
+    font-size: 20px;
+}
+
 #text {
     padding: 10px 20px;
     background: #f6f6f6;
